@@ -24,7 +24,7 @@ public class Presentación extends JFrame  {
 	protected static final String SQL = null;
 	JPanel panel;
 	JButton boton,botonC,botAgre,botModi,botEli,botLis;
-	JLabel etiquetaDatos,etiquetaCedula,etiquetaApe,etiquetaNom,etiqueta,etiqueta2,etiqueta3,etiqueta4,etiquetaImagen, saludo, saludo2;
+	JLabel etiquetaDatos,etiquetaCedula,etiquetaApe,etiquetaNom,etiqueta,etiqueta2,etiqueta3,etiqueta4,etiquetaImagen, mensaje, mensaje1,mensaje2;
 	
 	private void LimipiarCajas() {
 		cajaCed.setText(null);
@@ -36,6 +36,7 @@ public class Presentación extends JFrame  {
 	}
 	
 	private JTextField cajaCed,cajaNom,cajaApe,cajaTexto,cajaTexto2,cajaTexto3;
+
 	
 	public Presentación() {
 		
@@ -128,23 +129,16 @@ public class Presentación extends JFrame  {
 		cajaTexto3.setBounds(200, 230, 20, 20);
 		panel.add(cajaTexto3);	
 		
-		botLis = new JButton("Mostrar");
-		botLis.setBounds(190, 290, 90, 30);
-		botLis.setForeground(Color.blue);
-		botLis.setFont(new Font("Garamond",0,15));
-		panel.add(botLis);
-		
 		boton = new JButton("Determinar Juicio");
 		boton.setBounds(100, 320, 180, 30);
 		boton.setForeground(Color.blue);
 		boton.setFont(new Font("Garamond",3,15));
 		panel.add(boton);
 		
-		
-		JButton botAgre = new JButton("nuevo");
+		JButton botAgre = new JButton("Nuevo");
 		botAgre.setBounds(10, 290, 80, 30);
 		botAgre.setForeground(Color.blue);
-		botAgre.setFont(new Font("Garamond",0,15));
+		botAgre.setFont(new Font("Garamond",3,15));
 		panel.add(botAgre);
 		
 		botAgre.addActionListener(new ActionListener() {
@@ -166,7 +160,6 @@ public class Presentación extends JFrame  {
 			}
 			});
 	
-		
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.setBounds(220, 30, 125, 23);
 		panel.add(btnBuscar); 
@@ -202,7 +195,7 @@ public class Presentación extends JFrame  {
 		botModi = new JButton("Modificar");
 		botModi.setBounds(90, 290,100, 30);
 		botModi.setForeground(Color.blue);
-		botModi.setFont(new Font("Garamond",0,15));
+		botModi.setFont(new Font("Garamond",3,15));
 		panel.add(botModi);
 		botModi.addActionListener(new ActionListener() {
 			
@@ -227,7 +220,7 @@ public class Presentación extends JFrame  {
 		});
 		
 		botEli = new JButton("Eliminar");
-		botEli.setBounds(10, 320,90, 30);
+		botEli.setBounds(190, 290,90, 30);
 		botEli.setForeground(Color.blue);
 		botEli.setFont(new Font("Garamond",3,15));
 		panel.add(botEli);
@@ -248,16 +241,20 @@ public class Presentación extends JFrame  {
 				}
 			}
 		});
-			
-		
-		saludo = new JLabel();
-		saludo.setBounds(260,40, 300,300);
+
+	
+		mensaje = new JLabel();
+		mensaje.setBounds(260,40, 300,300);
 		boton.setFont(new Font("Garamond",0,15));
-		panel.add(saludo);
-		saludo2 = new JLabel();
-		saludo2.setBounds(260,60, 300,300);
-		boton.setFont(new Font("Garamond",0,15));
-		panel.add(saludo2);
+		panel.add(mensaje);
+		mensaje1= new JLabel();
+		mensaje1.setBounds(280,70, 300,300);
+		mensaje1.setFont(new Font("Garamond",0,15));
+		panel.add(mensaje1);
+		mensaje2 = new JLabel();
+		mensaje2.setBounds(280,90, 300,300);
+		mensaje2.setFont(new Font("Garamond",0,15));
+		panel.add(mensaje2);
 		
 		this.add(panel);
 		panel.add(boton);
@@ -273,16 +270,22 @@ public class Presentación extends JFrame  {
 	private ActionListener accionCalcular() {	
 	return new ActionListener() {
 	public void actionPerformed(ActionEvent arg0) {
-		
+		int cedula=0;
+		String nombre="";
+		String apellido="";
 		int escrito1=0;
 		int escrito2=0;
 		int oral=0;
+		cedula= Integer.valueOf(cajaCed.getText());
+		nombre= String.valueOf(cajaNom.getText());
+		apellido= String.valueOf(cajaApe.getText());
 		escrito1= Integer.valueOf(cajaTexto.getText());
 		escrito2= Integer.valueOf(cajaTexto2.getText());
 		oral= Integer.valueOf(cajaTexto3.getText());
 		Estudiante Nuevo= new Estudiante();
-		saludo.setText("El promedio de notas es: "+String.valueOf(Nuevo.CalculaNotas(escrito1, escrito2, oral)));
-		saludo2.setText("Juicio sugerido: " +Nuevo.juicio((int) Math.round(Nuevo.CalculaNotas(escrito1, escrito2, oral))));
+		mensaje.setText("Cedula: "+String.valueOf(cedula)+"Nombre: "+String.valueOf(nombre)+"Apellido: "+String.valueOf(apellido));
+		mensaje1.setText("El promedio de notas es: "+String.valueOf(Nuevo.CalculaNotas(escrito1, escrito2, oral)));
+		mensaje2.setText("Juicio sugerido: " +Nuevo.juicio((int) Math.round(Nuevo.CalculaNotas(escrito1, escrito2, oral))));
 		
 			}
 	
