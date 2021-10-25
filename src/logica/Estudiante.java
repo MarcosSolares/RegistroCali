@@ -93,7 +93,7 @@ public void AgregarEstudiante(Estudiante e) {
 }
 public Estudiante(){	
 }
-	public Estudiante(int cedula,String nombre, String apellido, double nota1, double nota2, double nota3) {
+	public Estudiante(int cedula,String nombre, String apellido,int nota1, int nota2, int nota3) {
 		this.cedula= cedula;
 		this.nombre= nombre;
 		this.apellido= apellido;
