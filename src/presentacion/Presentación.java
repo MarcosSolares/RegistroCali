@@ -9,13 +9,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import logica.Estudiante;
+
 
 
 public class Presentación extends JFrame  {
@@ -228,7 +228,7 @@ public class Presentación extends JFrame  {
 			
 			public void actionPerformed(ActionEvent e) {
 				try {
-					String cedula= cajaCed.getText().trim();
+				
 					Connection con= DriverManager.getConnection("jdbc:mysql://localhost/curso","root","root");
 					PreparedStatement sentenciaSQL = con.prepareStatement("delete from estudiante where cedula= ?");
 					sentenciaSQL.setString(1,cajaCed.getText().trim());

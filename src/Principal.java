@@ -1,7 +1,4 @@
-import javax.swing.JFrame;
-import logica.*;
 import persistencia.Conectar;
-import presentacion.*;
 import presentacion.Presentación;
 
 
